@@ -79,7 +79,7 @@ Each data point is currently a single run (no averaging).
   --cache-type-v q8_0 \
   --load-mode mlock \
   --spec-draft-device CUDA0,CUDA1
-
+```
 
 RTX 3090 ×2 Results
 
