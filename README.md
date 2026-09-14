@@ -79,3 +79,45 @@ Each data point is currently a single run (no averaging).
   --cache-type-v q8_0 \
   --load-mode mlock \
   --spec-draft-device CUDA0,CUDA1
+RTX 3090 ×2 Results
+
+Test system:
+
+2× NVIDIA GeForce RTX 3090 24GB
+NVLink connected
+CUDA P2P enabled
+AMD Ryzen Threadripper PRO 3945WX
+128GB RDIMM
+Ubuntu 22.04
+No GPU power limit (~350W per GPU / ~700W combined under load)
+Context	Prefill (tok/s)	Decode (tok/s)	MTP acceptance	Mean draft
+4K	1673.51	116.36	91.23% (645/707)	2.82
+32K	1696.19	92.85	77.75% (608/782)	2.55
+64K	1516.61	86.28	86.34% (632/732)	2.73
+128K	1228.07	73.89	95.77% (656/685)	2.91
+196K	1026.23	62.23	97.63% (660/676)	2.95
+260K	899.47	53.33	95.91% (656/684)	2.92
+
+Decode speed decreased from 116.36 tok/s at 4K to
+53.33 tok/s at 260K, a reduction of approximately 54.2%.
+
+The 260K-token prompt plus 1,000 generated tokens completed successfully
+on the two 24GB RTX 3090 GPUs.
+
+More Results Coming
+
+I am also testing the exact same benchmark on:
+
+2× NVIDIA Tesla V100 PCIe 32GB
+PCIe P2P enabled
+No NVLink
+
+The V100 results will be added here for direct comparison.
+
+Reproducing the Benchmark
+
+If you run this benchmark on another GPU configuration, feel free to share
+your results.
+
+Using the same corpus, context lengths, model, llama.cpp version, and
+generation settings will make hardware comparisons much more meaningful.
